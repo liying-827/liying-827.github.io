@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
     <title>起司學院</title>
-    <style>
-        * {
-            font-family: 微軟正黑體 !important;
-        }
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+
+    <style>
         body {
             margin: 0;
-            height: 2000px;
+            font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
         }
 
         ul {
@@ -25,376 +29,638 @@
         }
 
         a {
-            text-decoration: none;
+            display: inline-block;
+            text-decoration: none !important;
             color: black;
         }
 
-        .clear {
+        h2 {
+            margin: 30px;
+        }
+
+        clear {
             clear: both;
         }
 
-        .img-fluid {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
+        .container-fuil {
+            background-color: lightsalmon;
         }
 
         /* 導覽列 */
 
         .nav {
-            height: 100%;
-            background-color: #FFC400;
-            position: fixed;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-        .nav_1 {
-            /* 為了讓首頁分開 */
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 15px;
-        }
-
-        .nav_logo {
             width: 100%;
-            height: 104px;
-            margin-bottom: 40px;
+            background-color: gold;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+
+
+        .buttom {
+            margin: 0;
             box-sizing: border-box;
+            justify-content: center;
         }
 
-        .nav_text>li {
+        .logoimg {
+            width: 80px;
+            margin: 0 20px;
+        }
+
+        .buttom>li {
+            display: inline-block;
             box-sizing: border-box;
+            margin: 0 20px;
         }
 
-        .nav_text>li>a {
-            font-size: 26px;
-        }
-
-        .nav_text>li:hover>a {
-            color: red;
-            text-shadow: 1px 1px #CCC;
-        }
-
-        .cheese_down {
-            text-align: center;
-            display: none;
-            border-top: 1px solid black;
-            box-sizing: border-box;
-        }
-
-        .cheese:hover>.cheese_down {
-            display: block;
-        }
-
-        .cheese_down>li {
-            margin: 15px 0;
-        }
-
-        .cheese_down>li>a {
+        .buttom>li>a {
             font-size: 20px;
         }
 
-        .cheese_down>li:hover>a {
-            color: red;
-            text-shadow: 1px 1px #CCC;
+        .buttom>li:hover>a {
+            color: white;
+            text-shadow: 1px 1px #777;
         }
 
+        /* 下拉式選單 */
 
-        /* 右邊內容區 */
+        .dropdown {
+            position: relative;
+            z-index: 1;
+        }
+
+        .dropdown_text {
+            position: absolute;
+            width: 100%;
+            height: 0;
+            text-align: center;
+            background-color: gold;
+            border-radius: 4px;
+            transition: 0.8s;
+            overflow: hidden;
+        }
+
+        .dropdown_text>li {
+            box-sizing: border-box;
+            border-top: 1px solid white;
+            margin: 10px 0;
+            padding: 5px 0 0 0;
+        }
+
+        .dropdown_text>li>a {
+            font-size: 16px;
+        }
+
+        .buttom>li:hover>.dropdown_text {
+            height: 90px;
+        }
+
+        .dropdown_text>li:hover>a {
+            color: white;
+            text-shadow: 1px 1px #777;
+        }
 
         .all {
-            width: calc(100% - 185px);
-            margin: 0 auto 0 185px;
+            width: 100%;
+            margin: 80px auto 0 auto;
         }
 
-        /* 主圖 */
+        /* 區塊一:圖片 */
 
-        .slider {
+        .block1_img {
             width: 100%;
             height: 100vh;
-            background-image: url("img/slider.jpg");
+            background-image: url("img/bigimg.jpg");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
         }
 
-        /* 關於小知識 */
+        .block1 {
+            font-size: 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(400%);
+        }
 
-        .about_box {
-            position: relative;
+        /* 區塊二:知識 */
+
+        .box {
             width: 33.33%;
             float: left;
             padding: 0 15px;
             box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .about_text {
-            position: absolute;
-            width: calc(100% - 30px);
-            height: 100%;
-            transition: 0.6s;
-            z-index: 1;
-        }
-
-        .about_img {
-            opacity: 0.5;
             border-radius: 50%;
+
         }
 
-        .about_title {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* 讓文字變直式 */
-            -webkit-writing-mode: vertical-lr;
+        .block2 {
+            line-height: 300px;
+            padding: 60px 0;
+            box-sizing: border-box;
             writing-mode: vertical-lr;
             font-weight: bolder;
             font-size: 25px;
-            /* 讓文字有間距 */
             letter-spacing: 10px;
         }
 
-        .about_content {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            letter-spacing: 3px;
+        .know {
+            background-image: url("img/LOGO.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
-        .about_content span {
+        .card-body {
+            font-size: 18px;
             text-align: justify;
-            line-height: 26px;
-            padding: 0 50px;
+            letter-spacing: 2px;
         }
 
-        .about_box:hover .about_text {
-            transform: translateY(-100%);
-        }
+        /* 區塊三:種類 */
 
-        /* 關於種類 */
-
-        .wrap{
-            padding: 0 95px;
-        }
-
-        .specie_box {
-            position: relative;
-            width: 50%;
-            float: left;
-            padding: 0 30px 60px 30px;
+        .block_3 {
+            padding: 30px 0 -2px 0;
             box-sizing: border-box;
         }
 
-        .specie_text {
-            width: calc(100% - 50px)/2;
-            height: 100%;
-        }
-
-        .specie_text span {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px;
-        }
-
-        .specie_title {
+        #swiper-container-card {
             width: 100%;
-            height: 100%;
-            position: absolute;
-            font-size: 25px;
-            transform: translateY(40px);
+            height: 630px;
         }
 
-        .box3 {
-            width: 33.33%;
+        #card-all {
+            height: 230px;
+        }
+
+        /* 區塊四:營養素 */
+
+        .block4 {
+            font-size: 20px;
+            padding: 0 200px;
+            box-sizing: border-box;
+        }
+
+        /* 點選其他處，提示會消失 */
+
+        [type=reset],
+        [type=submit],
+        button,
+        html [type=button] {
+            -webkit-appearance: none;
+        }
+
+        /* 區塊五:功效 */
+
+        #swiper-container-card-2 {
+            width: 100%;
+            height: 400px;
+        }
+
+        #card-all-2 {
+            height: 160px;
+        }
+
+        /* 區塊六:料理 */
+
+
+
+
+        /* footer */
+
+        footer {
+            background-color: rgb(116, 98, 0);
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            padding: 10px 0;
         }
     </style>
-
-
 </head>
 
+
 <body>
-    <!-- 導覽列 -->
     <div class="nav">
-        <div class="nav_logo">
-            <img src="img/LOGO.png" alt="">
+        <div class="container">
+            <div class="nav justify-content-center">
+                <ul class="buttom">
+                    <li>
+                        <a href="">首頁</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="">關於起司
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown_text">
+                            <li>
+                                <a href="">小知識</a>
+                            </li>
+                            <li>
+                                <a href="">種類</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <img src="img/LOGO.png" alt="" class="logoimg">
+                    <li class="dropdown">
+                        <a href="">起司機能
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown_text">
+                            <li>
+                                <a href="">營養素</a>
+                            </li>
+                            <li>
+                                <a href="">功效</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">料理方式</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav_text">
-            <li>
-                <a href="" class="nav_1">
-                    <span>首</span>
-                    <span>頁</span>
-                </a>
-            </li>
-            <li class="cheese">
-                <a href="" class="nav_1">關於起司</a>
-                <ul class="cheese_down">
-                    <li>
-                        <a href="">小知識</a>
-                    </li>
-                    <li>
-                        <a href="">種類</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="cheese">
-                <a href="" class="nav_1">起司優點</a>
-                <ul class="cheese_down">
-                    <li>
-                        <a href="">營養素</a>
-                    </li>
-                    <li>
-                        <a href="">功效</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="">如何料理</a>
-            </li>
-        </ul>
+        <div class="clear"></div>
     </div>
 
     <div class="all">
-        <!-- 主圖 -->
+        <!-- 區塊一 -->
         <div class="container-fuil">
-            <div class="slider">
+            <div class="block_1">
+                <div class="block1_img">
+                    <div class="block1">
+                        歡迎來到起司學院
+                        <br> 讓我們一快來探索起司吧！
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <div class="container">
-            <!-- about之知識-->
-            <h1 style="margin: 60px;">關於起司 の 小知識</h1>
-            <div class="about">
-                <div class="about_box">
-                    <div class="about_text">
-                        <div class="about_title">
-                            <span>起司是被
-                                <spen style="color: red;">發現</spen>的
-                                <br>而不是被發明的
-                            </span>
-                        </div>
-                        <div class="about_content">
-                            <span>起源來自於阿拉伯。當時有一個阿拉伯商人出外經商時，在橫度沙漠的途中，意外發現存放在羊胃袋中的牛奶，經過長時間旅途顛簸搖盪及高溫曝曬後，竟然變成了奇異的乳清液體與塊狀起司，一嘗之後發現美味驚為天人，最初的起司就這樣誕生了。</span>
+            <!-- 區塊二:知識 -->
+            <h2>起司的小知識</h2>
+            <div class="block_2">
+                <div class="box">
+                    <a class="block2" data-toggle="collapse" href="#box_1" role="button" aria-expanded="false" aria-controls="box_1">
+                        <div class="know">起司的由來</div>
+                    </a>
+                    <div class="collapse" id="box_1">
+                        <div class="card card-body">
+                            起源來自於阿拉伯。當時有一個阿拉伯商人出外經商時，在橫度沙漠的途中，意外發現存放在羊胃袋中的牛奶，經過長時間旅途顛簸搖盪及高溫曝曬後，竟然變成了奇異的乳清液體與塊狀起司，一嘗之後發現美味驚為天人，最初的起司就這樣誕生了。
                         </div>
                     </div>
-                    <img src="img/about_u.jpg" class="img-fluid about_img" alt="">
                 </div>
-                <div class="about_box">
-                    <div class="about_text">
-                        <div class="about_title">
-                            <span>起司的標籤學</span>
-                        </div>
-                        <div class="about_content">
-                            <span>就像葡萄酒一樣，各國起司有自己獨特的標籤，但是這也僅限於小包裝的起司；小包裝起司在台灣並不容易找到，需要預訂才有。</span>
+                <div class="box">
+                    <a class="block2" data-toggle="collapse" href="#box_2" role="button" aria-expanded="false" aria-controls="box_2">
+                        <div class="know">起司標籤學</div>
+                    </a>
+                    <div class="collapse" id="box_2">
+                        <div class="card card-body">
+                            就像葡萄酒一樣，各國起司有自己獨特的標籤，比較嚴謹的是法國的AOC和義大利的DOP起司，但是這也僅限於小包裝的起司；小包裝起司在台灣並不容易找到，需要預訂才有。
                         </div>
                     </div>
-                    <img src="img/about_m.jpg" class="img-fluid about_img" alt="">
                 </div>
-                <div class="about_box">
-                    <div class="about_text">
-                        <div class="about_title">
-                            <span>保存的小撇步</span>
-                        </div>
-                        <div class="about_content">
-                            <span>建議起司都要放在冰箱裡，不過起司很容易吸味道，所以要小心冰箱裡的生鮮食材破壞了起司的原味，可先用保鮮膜包起來，再放入保鮮盒裡保存最佳。切片的起司因為和空氣的接觸面大，建議在兩個禮拜內吃完最好；切塊的起司則可延長至一個月內吃完即可。</span>
+                <div class="box">
+                    <a class="block2" data-toggle="collapse" href="#box_3" role="button" aria-expanded="false" aria-controls="box_3">
+                        <div class="know">起司的收藏</div>
+                    </a>
+                    <div class="collapse" id="box_3">
+                        <div class="card card-body">
+                            建議起司都要放在冰箱裡，不過起司很容易吸味道，所以要小心冰箱裡的生鮮食材破壞了起司的原味，可先用保鮮膜包起來，再放入保鮮盒裡保存最佳。切片的起司因為和空氣的接觸面大，建議在兩個禮拜內吃完最好；切塊的起司則可延長至一個月內吃完即可。
                         </div>
                     </div>
-                    <img src="img/about_b.jpg" class="img-fluid about_img" alt="">
                 </div>
-                <div class="clear"></div>
+            </div>
+
+            <!-- 區塊三:種類 -->
+            <div class="swiper-container" id="swiper-container-card">
+                <div class="block_3">
+                    <h2>起司的種類</h2>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/1.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">半硬質起司</h5>
+                                <h6 class="card-text">最常見、接受度也最高的Cheese種類，味道溫和沒有刺激感，是入門者的最佳選擇。
+                                    <br>挑選技巧：切口顏色均勻、透亮清晰的比較好。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/2.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">硬質起司</h5>
+                                <h6 class="card-text">含水量最低，大約30～40％，鹹度較高。熟成期較長，至少需要半年以上、最長達兩年，可以長久保存。
+                                    <br>挑選技巧：切口顏色均勻、透亮清晰的比較好。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/3.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">羊奶起司</h5>
+                                <h6 class="card-text">羊奶製成，可說是歷史最古老的起士，乾燥熟成的製法讓質地較硬，體積也都不會太大。
+                                    <br>挑選技巧：雖然屬於較半硬質的起士，但挑選時還是避免過硬的，以質地比較濕潤的比較好。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/4.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">藍黴起司</h5>
+                                <h6 class="card-text">製作過程中將新鮮起司一直翻轉、去除水分，等到變成較硬的豆腐狀，再把白黴加在表面，能夠讓口感吃起來變得柔滑、內部呈現膏狀，而且奶味比較重。
+                                    <br>挑選技巧：包裝緊密、白黴分布均勻品質比較好，用手輕按略顯彈性表是熟程度夠。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/5.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">白黴起司</h5>
+                                <h6 class="card-text">白黴起司最大的差別是從內部開始熟成，所以切開時可看到青藍色的黴菌不滿Cheese內部，鹹味重、氣味刺激。
+                                    <br>挑選技巧：切開之後青藍色的黴菌分布均勻，和白色部分對比越強的表示熟成程度越好。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/6.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">水洗式起司</h5>
+                                <h6 class="card-text">熟成過程中必須用鹽水不停地洗表皮，過程中表皮的菌體會發酵，最後產生一股略顯刺鼻的味道，味道十分濃厚。
+                                    <br>挑選技巧：確定柔軟度是一大要點，如果邊邊已經開始變硬，表示開始乾燥了，品質就沒有那麼好。</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img id="card-img" class="card-img-top" src="img/7.jpg" alt="Card image cap">
+                            <div class="card-body" id="card-all">
+                                <h5 class="card-title">新鮮軟質起司</h5>
+                                <h6 class="card-text">沒有經過熟成的過程，牛奶凝結之後去掉水分，還有奶香味的Cheese，質地其實很像優格，建議在第一時間就吃完。
+                                    <br>挑選技巧：顏色呈現白色的表示新鮮度佳，呈現黃色的就不要購買。</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
-        <!-- about之種類-->
-        <div class="container-fuil" style="background-color: #FFC400;">
+
+
+        <div class="container-fuil">
+            <!-- 區塊四:營養素 -->
             <div class="container">
-                <h1 style="margin: 60px;">關於起司 の 種類</h1>
-                <div class="wrap">
-                    <div>
-                        <div class="specie_box">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
-                                </div>
-                            </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
+                <div class="block_4">
+                    <h2 style="padding-top: 20px;">起司的營養素</h2>
+                    <div class="block4">
+                        <p style="margin-bottom: 30px;"> 起司營養價值高，有豐富的蛋白質、鈣質等，還有大量的乳酸菌，建議每日適量攝取，登山時也可隨身攜帶硬質起司做為暫時補充品，可依不同族群酌量食用。</p>
+                        <div>
+                            <a tabindex="0" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" role="button" data-trigger="focus"
+                                data-placement="bottom" data-content="富含構建身體基礎的優質蛋白質。">
+                                蛋白質
+                            </a>
+                            <a tabindex="0" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" role="button" data-trigger="focus"
+                                data-placement="bottom" data-content="內含豐富鈣質與維生素B2，具有可提高脂肪代謝的效果。">
+                                脂肪
+                            </a>
+                            <a tabindex="0" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" role="button" data-trigger="focus"
+                                data-placement="bottom" data-content="含有大量的維生素A。而在熟成過程中也會製造出大量的維生素B。">
+                                維生素
+                            </a>
+                            <a tabindex="0" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" role="button" data-trigger="focus"
+                                data-placement="bottom" data-content="富含鈣質，對於打造骨骼與牙齒、肌肉收縮活動、預防焦躁不安等都有功效。">
+                                無機質(礦物質)
+                            </a>
+                            <a tabindex="0" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" role="button" data-trigger="focus"
+                                data-placement="bottom" data-content="因牛乳中主要的碳水化合物乳糖幾乎會轉變成乳清，而且在熟成過程中也會被分解掉，因此熟成起司裡幾乎不含乳糖。">
+                                碳水化合物(醣類)
+                            </a>
                         </div>
-                        <div class="specie_box">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
-                                </div>
-                            </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
-                        </div>
-                        <div class="clear"></div>
                     </div>
+                </div>
+            </div>
 
-                    <div>
-                        <div class="specie_box">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
+            <!-- 區塊五:功效 -->
+            <div class="container">
+                <h2 style="padding-top: 30px;">起司的功效</h2>
+                <div class="block_5">
+                    <div class="swiper-container" id="swiper-container-card-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/1.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">抑制血糖值上升</h5>
+                                        <h6 class="card-text">起司屬於低GI食品，與碳水化合物一起食用，可使血糖值緩慢上升。</h6>
+                                    </div>
                                 </div>
                             </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
-                        </div>
-                        <div class="specie_box">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
-                                </div>
-                            </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
-                        </div>
-                        <div class="clear"></div>
-                    </div>
 
-                    <div>
-                        <div class="specie_box box3">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/2.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">預防循環系統疾病</h5>
+                                        <h6 class="card-text">起司具有抑制體內活性氧的成分，可預防心臟與血管疾病。</h6>
+                                    </div>
                                 </div>
                             </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
-                        </div>
-                        <div class="specie_box box3">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/3.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">預防骨質疏鬆症</h5>
+                                        <h6 class="card-text">富含鈣質，也內含可提高細胞運作幫助形成骨質的成分。</h6>
+                                    </div>
                                 </div>
                             </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
-                        </div>
-                        <div class="specie_box box3">
-                            <div class="specie_text">
-                                <div class="specie_title">
-                                    <span>半硬質起司</span>
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/4.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">預防蛀牙</h5>
+                                        <h6 class="card-text">硬質起司內含有豐富的磷酸鈣與胜肽，能有效預防蛀牙。</h6>
+                                    </div>
                                 </div>
                             </div>
-                            <img src="img/cheese1.jpg" class="img-fluid specie_img" alt="">
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/5.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">抑制肥胖</h5>
+                                        <h6 class="card-text">鈣質與維生素B2可加速脂肪代謝，使體質不易變胖。</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/5.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">預防高血壓</h5>
+                                        <h6 class="card-text">富含可降低血壓的鈣質，以及促進鈉排出的鉀。</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/5.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">抑制造成胃潰瘍
+                                            <br>的細菌</h5>
+                                        <h6 class="card-text">藍黴起司內含的遊離脂肪酸，可抑制幽門螺旋桿菌。</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img id="card-img" class="card-img-top" src="img/5.jpg" alt="Card image cap">
+                                    <div class="card-body" id="card-all-2">
+                                        <h5 class="card-title">整腸功效</h5>
+                                        <h6 class="card-text">質地柔軟的起司，可增加腸道內的比菲德氏菌，具有整頓腸道環境的功效。</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="clear"></div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- 區塊六:料理 -->
+        <div class="container">
+            <!-- section1 -->
+            <div id="section3" class="py-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5">
+                            <img class="w-100" src="img/1.jpg" alt="">
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <h1>Title</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus distinctio, beatae amet
+                                obcaecati ea maiores doloremque in alias sed pariatur vitae ipsum qui cum optio natus sint!
+                                Inventore, quasi hic.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- section2 -->
+            <div id="section4" class="py-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5 order-2 order-md-1">
+                            <h1>Title</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus distinctio, beatae amet
+                                obcaecati ea maiores doloremque in alias sed pariatur vitae ipsum qui cum optio natus sint!
+                                Inventore, quasi hic.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-5 order-1 order-md-2">
+                            <img class="w-100" src="img/1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="clear"></div>
+
     </div>
 
+    <!-- 區塊七:footer -->
+    <footer>
+        <div class="container">
+            <span>起司學院 © 2018 保留一切權利。</span>
+        </div>
+    </footer>
 
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+
+
+    <script>
+        // 卡片輪播-種類
+        var swiper = new Swiper('#swiper-container-card', {
+            slidesPerView: 3,
+            spaceBetween: 50,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // 卡片輪播-功效
+        var swiper = new Swiper('#swiper-container-card-2', {
+            slidesPerView: 4,
+            spaceBetween: 50,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        })
+
+        $('.popover-dismiss').popover({
+            trigger: 'focus'
+        })
+    </script>
 </body>
+
+
 
 </html>
